@@ -1,10 +1,14 @@
 package com.oxycaterers.utilities;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
 import java.util.concurrent.TimeUnit;
 
 public class Driver
 {
-    private static WebDriver MyDriver;
+    private static WebDriver myDriver;
 
     private static  long timeout=10;
     public enum DriverTypes
@@ -29,15 +33,17 @@ public class Driver
                     myDriver =new ChromeDriver();
                     break;
 
-                case FIREFOX:
+              /*  case FIREFOX:
                     System.setProperty("webdriver.gecko.driver","Drivers/geckoDriver");
-                    myDriver =new FireFoxDriver();
+                    myDriver =new fireFoxDriver();
                     break;
-            }
+            */}
 
-            myDriver.manage().timesouts().implycitlyWait(20, TimeUnit.SECONDS);
+            myDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             myDriver.manage().window().maximize();
         }
+
+        return myDriver;
     }
 
 
